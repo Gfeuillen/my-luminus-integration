@@ -48,7 +48,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     )
 
     # add a service from this integration to push meter values
-    hass.services.register(DOMAIN, "publish_meter_values", handle_new_meter_values)
+    hass.services.async_register(DOMAIN, "publish_meter_values", handle_new_meter_values)
 
     # Initiate the coordinator. This method will also make sure to login to the API
 
