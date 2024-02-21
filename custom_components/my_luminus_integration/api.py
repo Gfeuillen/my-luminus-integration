@@ -39,9 +39,9 @@ class MyLuminusApiClient:
         """
         get new token, required for all the other requests
 
-        POST https://mobileapi.luminus.be/token
+        POST https://login.luminus.be/oauth/token
 
-        grant_type=password&username=UW_EMAIL&password=UW_WACHTWOORD
+        grant_type=password&username=YOUR_EMAIL&password=YOUR_PASSWORD&client_id=AUTH0_CLIENT_ID
 
         {
             "access_token": "****",
@@ -55,7 +55,7 @@ class MyLuminusApiClient:
         """
         return await self._api_wrapper(
             method="POST",
-            url="https://mobileapi.luminus.be/token",
+            url="https://login.luminus.be/oauth/token",
             # this call doesn't take json but url encoded form data
             headers={
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -63,7 +63,8 @@ class MyLuminusApiClient:
             data="grant_type=password&username="
             + self._username
             + "&password="
-            + self._password,
+            + self._password
+            + "&client_id=IKPSr122AreYvrlNgRVE8o3vuscGETbe"
         )
 
     async def contracts(self, token) -> any:
